@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+function BorderBox() {
+  return <div className="box" />;
+}
+function BoardRow(props) {
+  const { count } = props;
+
+  const getList = () => {
+    const list = [];
+    for (let i = 0; i < count; i++) {
+      list.push(<BorderBox />);
+    }
+    return list;
+  };
+
+  return <div className="row">{getList()}</div>;
+}
+function Board(props) {
+  return (
+    <>
+      <BoardRow count={props.width} />
+    </>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Snake</h1>
+      <Board width={10} height={10} />
     </div>
   );
 }
